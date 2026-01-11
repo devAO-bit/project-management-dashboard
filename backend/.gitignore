@@ -1,0 +1,50 @@
+# Node.js
+
+# Dependencies
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+.nuxt/
+
+# Misc
+.env
+.env.local
+.env.*.local
+.DS_Store
+.cache/
+.parcel-cache/
+.pnp.js
+.pnp/
+.serverless/
+*.tgz
+*.sqlite
+*.sqlite3
+*.db
+*.tsbuildinfo
+
+# IDEs
+.vscode/
+.idea/
+
