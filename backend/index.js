@@ -3,8 +3,8 @@ const dotenv = require('dotenv');
 const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
-const mongoSanitize = require('express-mongo-sanitize');
-const xss = require('xss-clean');
+// const mongoSanitize = require('express-mongo-sanitize');
+// const xss = require('xss-clean');
 const rateLimit = require('express-rate-limit');
 const hpp = require('hpp');
 const compression = require('compression');
@@ -20,6 +20,14 @@ connectDB();
 
 const app = express();
 
+// Enable CORS
+app.use(cors({
+    origin: process.env.CLIENT_URL,
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 // Body parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -33,7 +41,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use(helmet());
 
 // Prevent XSS attacks
-app.use(xss());
+// app.use(xss());
 
 // Rate limiting
 const limiter = rateLimit({
@@ -45,14 +53,8 @@ app.use('/api/', limiter);
 // Prevent http param pollution
 app.use(hpp());
 
-// Enable CORS
-app.use(cors({
-    origin: process.env.CLIENT_URL,
-    credentials: true
-}));
-
 // Sanitize data
-app.use(mongoSanitize());
+// app.use(mongoSanitize());
 
 // Compress responses
 app.use(compression());
