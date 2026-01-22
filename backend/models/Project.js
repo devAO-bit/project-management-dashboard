@@ -93,7 +93,7 @@ projectSchema.pre('save', function (next) {
     if (this.endDate < this.startDate) {
         next(new Error('End date must be after start date'));
     }
-    next();
+    return;
 });
 
 module.exports = mongoose.model('Project', projectSchema);
