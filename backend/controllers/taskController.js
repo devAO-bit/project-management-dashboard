@@ -1,3 +1,5 @@
+const Task = require('../models/Task');
+
 // @desc    Get all tasks
 // @route   GET /api/tasks
 // @access  Private
